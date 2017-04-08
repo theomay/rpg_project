@@ -10,10 +10,27 @@ router.post('/', function(req, res, next) {
     if (err) {
       console.log(err);
     } else {
-      console.log('meow');
+      res.send({message: "save success"});
     }
   });
+});
 
+router.get('/', function(req, res, next) {
+  CharacterModel.find({}, function (err, result) {
+    if (err) {
+      return console.log(err);
+    }
+    return res.send(result);
+  });
+});
+
+router.delete('/', function(req, res, next) {
+  CharacterModel.remove({}, function (err, result) {
+    if (err) {
+      return console.log(err);
+    }
+    res.send({message: "delete success"});
+  });
 });
 
 module.exports = router;

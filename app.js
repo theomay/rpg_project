@@ -24,8 +24,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-
 app.use('/characters', characters);
 app.use('/users', users);
 app.use('/', index);
@@ -49,6 +47,8 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+
 mongoose.connect('mongodb://localhost/test');
+
 
 module.exports = app;
